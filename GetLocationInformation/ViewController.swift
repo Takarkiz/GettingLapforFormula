@@ -88,11 +88,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         else{
             let afterAlert = UIAlertController(
                 title:"以前に保存された位置情報があります",
-                message:"以前の位置情報に上書きされます",
+                message:"以前の位置情報に上書きしますか？",
                 preferredStyle:UIAlertControllerStyle.Alert)
             
             afterAlert.addAction(UIAlertAction(
-                title:"OK",
+                title:"上書き保存",
                 style:.Default,
                 handler:{action in self.ok()}))
             afterAlert.addAction(UIAlertAction(
