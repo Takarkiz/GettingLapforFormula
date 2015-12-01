@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C06F8421C0CA73F001931C2 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C06F8411C0CA73F001931C2 /* TimerViewController.swift */; };
 		3CAF36C11C08DBEB00F8D4ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF36C01C08DBEB00F8D4ED /* AppDelegate.swift */; };
 		3CAF36C31C08DBEB00F8D4ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF36C21C08DBEB00F8D4ED /* ViewController.swift */; };
 		3CAF36C61C08DBEB00F8D4ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAF36C41C08DBEB00F8D4ED /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 		3CAF36CB1C08DBEB00F8D4ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAF36C91C08DBEB00F8D4ED /* LaunchScreen.storyboard */; };
 		3CAF36D61C08DBEC00F8D4ED /* GetLocationInformationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF36D51C08DBEC00F8D4ED /* GetLocationInformationTests.swift */; };
 		3CAF36E11C08DBEC00F8D4ED /* GetLocationInformationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAF36E01C08DBEC00F8D4ED /* GetLocationInformationUITests.swift */; };
+		3CAF36EF1C08E06700F8D4ED /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CAF36EE1C08E06700F8D4ED /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C06F8411C0CA73F001931C2 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		3CAF36BD1C08DBEB00F8D4ED /* GetLocationInformation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetLocationInformation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CAF36C01C08DBEB00F8D4ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CAF36C21C08DBEB00F8D4ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		3CAF36DC1C08DBEC00F8D4ED /* GetLocationInformationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetLocationInformationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CAF36E01C08DBEC00F8D4ED /* GetLocationInformationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocationInformationUITests.swift; sourceTree = "<group>"; };
 		3CAF36E21C08DBEC00F8D4ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CAF36EE1C08E06700F8D4ED /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CAF36EF1C08E06700F8D4ED /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +82,7 @@
 		3CAF36B41C08DBEB00F8D4ED = {
 			isa = PBXGroup;
 			children = (
+				3CAF36EE1C08E06700F8D4ED /* CoreLocation.framework */,
 				3CAF36BF1C08DBEB00F8D4ED /* GetLocationInformation */,
 				3CAF36D41C08DBEC00F8D4ED /* GetLocationInformationTests */,
 				3CAF36DF1C08DBEC00F8D4ED /* GetLocationInformationUITests */,
@@ -99,6 +105,7 @@
 			children = (
 				3CAF36C01C08DBEB00F8D4ED /* AppDelegate.swift */,
 				3CAF36C21C08DBEB00F8D4ED /* ViewController.swift */,
+				3C06F8411C0CA73F001931C2 /* TimerViewController.swift */,
 				3CAF36C41C08DBEB00F8D4ED /* Main.storyboard */,
 				3CAF36C71C08DBEB00F8D4ED /* Assets.xcassets */,
 				3CAF36C91C08DBEB00F8D4ED /* LaunchScreen.storyboard */,
@@ -257,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CAF36C31C08DBEB00F8D4ED /* ViewController.swift in Sources */,
+				3C06F8421C0CA73F001931C2 /* TimerViewController.swift in Sources */,
 				3CAF36C11C08DBEB00F8D4ED /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,6 +490,7 @@
 				3CAF36E71C08DBEC00F8D4ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CAF36E81C08DBEC00F8D4ED /* Build configuration list for PBXNativeTarget "GetLocationInformationTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +499,7 @@
 				3CAF36EA1C08DBEC00F8D4ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CAF36EB1C08DBEC00F8D4ED /* Build configuration list for PBXNativeTarget "GetLocationInformationUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +508,7 @@
 				3CAF36ED1C08DBEC00F8D4ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
