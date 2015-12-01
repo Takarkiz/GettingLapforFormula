@@ -138,7 +138,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.view.addSubview(ido)
         self.view.addSubview(keido)
         
-        //NSUserDefaultsを呼び出して、Arrayに保存
+        //NSUserDefaultsを呼び出して保存
         defaults.setDouble(lat1, forKey: "ido")
         defaults.synchronize()
         print("緯度を登録しました")

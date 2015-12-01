@@ -36,7 +36,6 @@
                                 <state key="normal" title="経度・緯度をゲット"/>
                                 <connections>
                                     <action selector="getLocation" destination="BYZ-38-t0r" eventType="touchUpInside" id="VRF-th-MxQ"/>
-                                    <segue destination="1t2-vt-O9f" kind="presentation" id="yXu-5M-rLB"/>
                                 </connections>
                             </button>
                         </subviews>
