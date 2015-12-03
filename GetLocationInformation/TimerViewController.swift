@@ -19,11 +19,25 @@ class TimerViewController: UIViewController, CLLocationManagerDelegate {
     let defaults2 = NSUserDefaults.standardUserDefaults()
     var lat1:Double = 0.0
     var lon1:Double = 0.0
+    var index:Int = 0
+    
     
     //タイマー系のインスタンスの定義
     @IBOutlet var label: UILabel!
     var count: Float = 0.0
     var timer:NSTimer = NSTimer()
+    var rap:[Float] = []
+    @IBOutlet var rap1:UILabel!
+    @IBOutlet var rap2:UILabel!
+    @IBOutlet var rap3:UILabel!
+    @IBOutlet var rap4:UILabel!
+    @IBOutlet var rap5:UILabel!
+    @IBOutlet var rap6:UILabel!
+    @IBOutlet var rap7:UILabel!
+    @IBOutlet var rap8:UILabel!
+    @IBOutlet var rap9:UILabel!
+    @IBOutlet var rap10:UILabel!
+    
     
 
     override func viewDidLoad() {
@@ -73,7 +87,7 @@ class TimerViewController: UIViewController, CLLocationManagerDelegate {
         NSLog("緯度:\(latitude), 経度:\(longitude)")
         
         if latitude == lat1 && longitude == lon1{
-            if !timer.valid{
+            if !timer.valid && index == 0{
                 //タイマーが作動していなかったら
                 timer = NSTimer.scheduledTimerWithTimeInterval(0.01,
                     target: self,
@@ -81,9 +95,34 @@ class TimerViewController: UIViewController, CLLocationManagerDelegate {
                     userInfo: nil,
                     repeats: true
                 )
-            }else{
-                //タイマーが動いていた時
-                timer.invalidate()
+                index = index + 1
+            }else if timer.valid && index >= 1{
+                rap.append(count)
+                
+                switch index{
+                case 1: rap1.text = "\(rap[0])"
+                    break
+                case 2: rap2.text = "\(rap[1])"
+                    break
+                case 3: rap3.text = "\(rap[2])"
+                    break
+                case 4: rap4.text = "\(rap[3])"
+                    break
+                case 5: rap5.text = "\(rap[4])"
+                    break
+                case 6: rap6.text = "\(rap[5])"
+                    break
+                case 7: rap7.text = "\(rap[6])"
+                    break
+                case 8: rap8.text = "\(rap[7])"
+                    break
+                case 9: rap9.text = "\(rap[8])"
+                    break
+                default: rap10.text = "\(rap[9])"
+                    break
+                
+                }
+                index++
             }
         }
     }
@@ -95,6 +134,12 @@ class TimerViewController: UIViewController, CLLocationManagerDelegate {
         //ラベルい小数点以下2桁まで表示
         label.text = String(format:"%.2f",count)
     }
+    
+    //タイマーを止めるメソッド
+    @IBAction func stop(){
+        timer.invalidate()
+    }
+    
     
     //位置情報取得失敗時に実行される関数
     func locationManager(manager:CLLocationManager, didFailWithError error:NSError){
