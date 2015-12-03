@@ -18,15 +18,21 @@ class TimerViewController: UIViewController, CLLocationManagerDelegate {
     let defaults = NSUserDefaults.standardUserDefaults()
     let defaults2 = NSUserDefaults.standardUserDefaults()
     var lat1:Double = 0.0
-    var lot1:Double = 0.0
+    var lon1:Double = 0.0
+    
+    //タイマー系のインスタンスの定義
+    @IBOutlet var label: UILabel!
+    var count: Float = 0.0
+    var timer:NSTimer = NSTimer()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         lat1 = defaults.doubleForKey("ido")
         print("渡された緯度の値は\(lat1)")
-        lot1 = defaults.doubleForKey("keido")
-        print("渡された経度の値は\(lot1)")
+        lon1 = defaults.doubleForKey("keido")
+        print("渡された経度の値は\(lon1)")
         
         //フィールドの初期化
         myLocationManager = CLLocationManager()
@@ -66,7 +72,28 @@ class TimerViewController: UIViewController, CLLocationManagerDelegate {
         //取得した緯度経度をLogに表示
         NSLog("緯度:\(latitude), 経度:\(longitude)")
         
-        
+        if latitude == lat1 && longitude == lon1{
+            if !timer.valid{
+                //タイマーが作動していなかったら
+                timer = NSTimer.scheduledTimerWithTimeInterval(0.01,
+                    target: self,
+                    selector: Selector("up"),
+                    userInfo: nil,
+                    repeats: true
+                )
+            }else{
+                //タイマーが動いていた時
+                timer.invalidate()
+            }
+        }
+    }
+    
+    //タイマーを進ませるメソッド
+    func up(){
+        //countを0.01(時間経過分)足す
+        count = count + 0.01
+        //ラベルい小数点以下2桁まで表示
+        label.text = String(format:"%.2f",count)
     }
     
     //位置情報取得失敗時に実行される関数
