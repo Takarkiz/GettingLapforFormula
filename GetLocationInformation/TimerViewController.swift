@@ -15,11 +15,12 @@ class TimerViewController: UIViewController, CLLocationManagerDelegate {
     var myLocationManager: CLLocationManager!
     var latitude: CLLocationDegrees!
     var longitude: CLLocationDegrees!
-    let defaults = NSUserDefaults.standardUserDefaults()
-    let defaults2 = NSUserDefaults.standardUserDefaults()
+//    let defaults = NSUserDefaults.standardUserDefaults()
+//    let defaults2 = NSUserDefaults.standardUserDefaults()
     var lat1:Double = 0.0
     var lon1:Double = 0.0
     var index:Int = 0
+    var ichi:[Double]!
     
     
     //タイマー系のインスタンスの定義
@@ -43,10 +44,13 @@ class TimerViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lat1 = defaults.doubleForKey("ido")
-        print("渡された緯度の値は\(lat1)")
-        lon1 = defaults.doubleForKey("keido")
-        print("渡された経度の値は\(lon1)")
+//        lat1 = defaults.doubleForKey("ido")
+//        print("渡された緯度の値は\(lat1)")
+//        lon1 = defaults.doubleForKey("keido")
+//        print("渡された経度の値は\(lon1)")
+        lat1 = ichi[0]
+        lon1 = ichi[1]
+        NSLog("渡された緯度：\(ichi[0])\n経度：\(ichi[1])")
         
         //フィールドの初期化
         myLocationManager = CLLocationManager()
@@ -86,7 +90,22 @@ class TimerViewController: UIViewController, CLLocationManagerDelegate {
         //取得した緯度経度をLogに表示
         NSLog("緯度:\(latitude), 経度:\(longitude)")
         
-        if latitude == lat1 && longitude == lon1{
+        let idosa:Double = latitude - lat1
+        let keidosa:Double = longitude - lon1
+        var value = idosa
+        var value2 = keidosa
+        
+        if idosa < 0 {
+            value = -1 * idosa
+        }
+        if keidosa < 0 {
+            value2 = -1 * keidosa
+        }
+        
+        print("緯度の差が\(value)")
+        print("経度の差が\(value2)")
+        
+        if value <= 0.0001 && value2 <= 0.0001_{
             if !timer.valid && index == 0{
                 //タイマーが作動していなかったら
                 timer = NSTimer.scheduledTimerWithTimeInterval(0.01,
@@ -96,33 +115,41 @@ class TimerViewController: UIViewController, CLLocationManagerDelegate {
                     repeats: true
                 )
                 index = index + 1
+                print("時間計測スタート")
             }else if timer.valid && index >= 1{
                 rap.append(count)
+//                var i:Int = 0
+//                for i = 0; i < 9; i+=1{
+//                    if rap[i] < 5{
+//                    rap.removeAtIndex(i)
+//                    }
+//                }
                 
                 switch index{
                 case 1: rap1.text = "\(rap[0])"
                     break
-                case 2: rap2.text = "\(rap[1])"
+                case 2: rap2.text = "\(rap[1]-rap[0])"
                     break
-                case 3: rap3.text = "\(rap[2])"
+                case 3: rap3.text = "\(rap[2]-rap[1])"
                     break
-                case 4: rap4.text = "\(rap[3])"
+                case 4: rap4.text = "\(rap[3]-rap[2])"
                     break
-                case 5: rap5.text = "\(rap[4])"
+                case 5: rap5.text = "\(rap[4]-rap[3])"
                     break
-                case 6: rap6.text = "\(rap[5])"
+                case 6: rap6.text = "\(rap[5]-rap[4])"
                     break
-                case 7: rap7.text = "\(rap[6])"
+                case 7: rap7.text = "\(rap[6]-rap[5])"
                     break
-                case 8: rap8.text = "\(rap[7])"
+                case 8: rap8.text = "\(rap[7]-rap[6])"
                     break
-                case 9: rap9.text = "\(rap[8])"
+                case 9: rap9.text = "\(rap[8]-rap[7])"
                     break
-                default: rap10.text = "\(rap[9])"
+                default: rap10.text = "\(rap[9]-rap[8])"
                     break
                 
                 }
                 index++
+                print("時間が記録されました")
             }
         }
     }
