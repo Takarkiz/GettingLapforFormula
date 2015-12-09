@@ -16,8 +16,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var myLocationManager:CLLocationManager!
     @IBOutlet var keido:UILabel!
     @IBOutlet var ido:UILabel!
-//    let defaults = NSUserDefaults.standardUserDefaults()
-//    let defaults2 = NSUserDefaults.standardUserDefaults()
+    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults2 = NSUserDefaults.standardUserDefaults()
     var lat1:Double = 0.0
     var lon1:Double = 0.0
     var ichi:[Double] = []
@@ -77,56 +77,35 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         ichi.removeAll()
         
-        myLocationManager.startUpdatingLocation()
-        print("位置情報の取得を開始")
+//        myLocationManager.startUpdatingLocation()
+        //アラートを作成
+            let firstalert = UIAlertController(
+                title:"保存",
+                message:"新規の位置情報を保存します",
+                preferredStyle:UIAlertControllerStyle.Alert)
+            
+            firstalert.addAction(
+                UIAlertAction(
+                    title:"OK",
+                    style:.Default,
+                    handler:{action in
+                        //ボタンが押された時の動作
+                        self.ok()
+                    }
+                )
+            )
         
-
-//        //位置情報がまだ端末に保存されていない状態
-//        if lat1 == 0.0 && lon1 == 0.0{
-//            
-//            let firstalert = UIAlertController(
-//                title:"保存",
-//                message:"新規の位置情報を保存します",
-//                preferredStyle:UIAlertControllerStyle.Alert)
-//            
-//            firstalert.addAction(UIAlertAction(
-//                title:"OK",
-//                style:.Default,
-//                handler:{ action in print("OK")}))
-//        }
-//            
-//        //以前に端末に保存した位置情報がある時
-//        else{
-//            let afterAlert = UIAlertController(
-//                title:"以前に保存された位置情報があります",
-//                message:"以前の位置情報に上書きしますか？",
-//                preferredStyle:UIAlertControllerStyle.Alert)
-//            
-//            afterAlert.addAction(UIAlertAction(
-//                title:"上書き保存",
-//                style:.Default,
-//                handler:{action in self.ok()}))
-//            afterAlert.addAction(UIAlertAction(
-//                title:"Cancel",
-//                style:.Default,
-//                handler:{action in self.cancel()}))
-//        }
-        
+        presentViewController(firstalert, animated:true, completion:nil)
         
     }
-//    //OKを押した時のメソッド(位置情報の取得開始)
-//    func ok(){
-////        defaults.removeObjectForKey("ido")
-////        defaults2.removeObjectForKey("keido")
-//        
-//        myLocationManager.startUpdatingLocation()
-//        print("OK")
-//    }
-//    //キャンセル時のメソッド(位置情報を取得しない)
-//    func cancel(){
-//        print("cancel")
-//    }
     
+    //OKを押した時のメソッド(位置情報の取得開始)
+    func ok(){
+        
+        print("OK")
+        myLocationManager.startUpdatingLocation()
+        print("位置情報の取得を開始")
+    }
 
     
     // 位置情報取得に成功したときに呼び出されるデリゲート.
@@ -138,9 +117,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // 緯度・経度の表示.
         ido.text = "緯度：\(lat1)"
         ido.textAlignment = NSTextAlignment.Center
-        
+        myLocationManager.stopUpdatingLocation()
         keido.text = "経度：\(lon1)"
         keido.textAlignment = NSTextAlignment.Center
+        myLocationManager.stopUpdatingLocation()
         
         NSLog("緯度\(lat1),経度\(lon1)")
         
@@ -155,15 +135,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.view.addSubview(ido)
         self.view.addSubview(keido)
         
-//        //NSUserDefaultsを呼び出して保存
-//        defaults.setDouble(lat1, forKey: "ido")
-//        defaults.synchronize()
-//        print("緯度を登録しました")
-//        
-//        defaults2.setDouble(lon1, forKey: "keido")
-//        defaults2.synchronize()
-//        print("経度を保存しました")
-//        
+        //NSUserDefaultsを呼び出して保存
+        defaults.setDouble(lat1, forKey: "ido")
+        defaults.synchronize()
+        print("緯度を保存しました")
+        
+        defaults2.setDouble(lon1, forKey: "keido")
+        defaults2.synchronize()
+        print("経度を保存しました")
+
 //       //昔"mistake"という鍵で保存したかどうか確認
 //        if ((defaults.objectForKey("ido")) != nil){
 //

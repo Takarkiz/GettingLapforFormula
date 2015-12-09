@@ -45,9 +45,9 @@ class TimerViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
 //        lat1 = defaults.doubleForKey("ido")
-//        print("渡された緯度の値は\(lat1)")
+//        print("渡される緯度の値は\(lat1)")
 //        lon1 = defaults.doubleForKey("keido")
-//        print("渡された経度の値は\(lon1)")
+//        print("渡される経度の値は\(lon1)")
         lat1 = ichi[0]
         lon1 = ichi[1]
         NSLog("渡された緯度：\(ichi[0])\n経度：\(ichi[1])")
