@@ -117,7 +117,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // 緯度・経度の表示.
         ido.text = "緯度：\(lat1)"
         ido.textAlignment = NSTextAlignment.Center
-        myLocationManager.stopUpdatingLocation()
         keido.text = "経度：\(lon1)"
         keido.textAlignment = NSTextAlignment.Center
         myLocationManager.stopUpdatingLocation()
@@ -144,37 +143,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         defaults2.synchronize()
         print("経度を保存しました")
 
-//       //昔"mistake"という鍵で保存したかどうか確認
-//        if ((defaults.objectForKey("ido")) != nil){
-//
-//            //objectsを配列として確定させ、前回の保存内容を格納
-//            let objects = defaults.objectForKey("ido") as? [Double]
-//            
-//            //各名前を格納するための変数を宣言
-//            let lat:Double
-//            
-//            //前回の保存内容が格納された配列の中身を一つずつ取り出す
-//            for lat in objects!{
-//
-//            }
-//        }
-        
-//        //昔"mistake"という鍵で保存したかどうか確認
-//        if ((defaults2.objectForKey("keido")) != nil){
-//            
-//            //objectsを配列として確定させ、前回の保存内容を格納
-//            let objects = defaults2.objectForKey("keido") as? [Double]
-//            
-//            //各名前を格納するための変数を宣言
-//            let lon:Double
-//            
-//            //前回の保存内容が格納された配列の中身を一つずつ取り出す
-//            for lon in objects!{
-//                
-//            }
-//        }
-
-
         
     }
     
@@ -183,10 +151,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print("error")
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let next = segue.destinationViewController as! TimerViewController
-        next.ichi = self.ichi
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        let next = segue.destinationViewController as! TimerViewController
+//        next.ichi = self.ichi
+//    }
     
 
     override func didReceiveMemoryWarning() {
