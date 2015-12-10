@@ -11,7 +11,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate  {
     
     var myLocationManager:CLLocationManager!
     @IBOutlet var keido:UILabel!
@@ -38,7 +38,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         // まだ認証が得られていない場合は、認証ダイアログを表示.
         if(status == CLAuthorizationStatus.NotDetermined) {
-            print("didChangeAuthorizationStatus:\(status)");
+            print("didChangeAuthorizationStatus:\(status)")
             // まだ承認が得られていない場合は、認証ダイアログを表示.
             self.myLocationManager.requestAlwaysAuthorization()
         }
@@ -135,13 +135,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.view.addSubview(keido)
         
         //NSUserDefaultsを呼び出して保存
-        defaults.setDouble(lat1, forKey: "ido")
+        defaults.setObject(ichi, forKey: "ido")
         defaults.synchronize()
-        print("緯度を保存しました")
+        print("緯度と経度を保存しました")
         
-        defaults2.setDouble(lon1, forKey: "keido")
-        defaults2.synchronize()
-        print("経度を保存しました")
+//        defaults2.setDouble(lon1, forKey: "keido")
+//        defaults2.synchronize()
+//        print("経度を保存しました")
 
         
     }

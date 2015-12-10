@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1046" y="186.75"/>
+            <point key="canvasLocation" x="1093" y="164"/>
         </scene>
         <!--Timer View Controller-->
         <scene sceneID="PYv-mx-xwb">
