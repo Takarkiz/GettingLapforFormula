@@ -18,9 +18,9 @@ class ListTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ichiarray = defaults.arrayForKey("ido")!
+        print("渡された値 緯度:\(ichiarray[0])経度:\(ichiarray[1])")
         
-        
-
     }
 
     override func didReceiveMemoryWarning() {
