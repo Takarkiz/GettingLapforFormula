@@ -105,7 +105,7 @@ class TimerViewController: UIViewController, CLLocationManagerDelegate {
         print("緯度の差が\(value)")
         print("経度の差が\(value2)")
         
-        if value <= 0.0001 && value2 <= 0.0001_{
+        if value <= 0.0001 && value2 <= 0.0001{
             if !timer.valid && index == 0{
                 //タイマーが作動していなかったら
                 timer = NSTimer.scheduledTimerWithTimeInterval(0.01,

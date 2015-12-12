@@ -5,7 +5,7 @@
 //  Created by 澤田昂明 on 2015/11/28.
 //  Copyright © 2015年 Takarki. All rights reserved.
 //
-//制度はそこそこ出ているもののGPSで緯度経度を取得するやり方だと、多少のずれとれなくなったり、条件の幅を広げるとゆるゆるのタイマーになってしまう。
+//精度はそこそこ出ているもののGPSで緯度経度を取得するやり方だと、多少のずれとれなくなったり、条件の幅を広げるとゆるゆるのタイマーになってしまう。
 //
 
 import UIKit
@@ -57,8 +57,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate,UITextFieldDel
         //textFieldのデリゲード
         self.name.delegate = self
         
+        
+        //NSUserdefaultで緯度と経度を収納して保存した配列の確認
+        //昔"openKey"という鍵で保存したかどうか確認
+        if((defaults.arrayForKey("ido")) != nil){
+            
+            //objectsを配列として確定させ、前回の保存内容を格納
+            let objects = defaults.arrayForKey("ido") as? [String]
+            
+            //各名前を格納するための変数を宣言
+            var nameString:AnyObject
+            
+            //前回の保存内容が格納された配列の中身を一つずつ取り出す
+            for nameString in objects!{
+                //配列に追加していく
+                ichi.append(nameString as Array)
+            }
+            
+        }
+
+        
     }
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        
+        
+        
         
         print("didChangeAuthorizationStatus");
         
@@ -79,9 +102,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate,UITextFieldDel
         print(" CLAuthorizationStatus: \(statusStr)")
     }
     
-    func textField(textField: UITextField!, shouldCharactersInRange range: NSRange, replacementString string: String!) ->Bool {
-        
-    }
+//    func textField(textField: UITextField!, shouldCharactersInRange range: NSRange, replacementString string: String!) -> Bool {
+//        
+//    }
     
     @IBAction func getLocation(){
         
@@ -137,12 +160,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate,UITextFieldDel
         ichi.append(lon1)
 //        print(ichi)
         
-        
-//        ichiarray.append(lat1)
-//        ichiarray.append(lon1)
-        
-        self.view.addSubview(ido)
-        self.view.addSubview(keido)
+//        //変更されるたびにラベルに表示される（今回は不要)
+//        self.view.addSubview(ido)
+//        self.view.addSubview(keido)
         
         //NSUserDefaultsを呼び出して保存
         defaults.setObject(ichi, forKey: "ido")
