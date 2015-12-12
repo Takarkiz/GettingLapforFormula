@@ -107,8 +107,8 @@
 			children = (
 				3CAF36C01C08DBEB00F8D4ED /* AppDelegate.swift */,
 				3CAF36C21C08DBEB00F8D4ED /* ViewController.swift */,
-				3C06F8411C0CA73F001931C2 /* TimerViewController.swift */,
 				3C09F73E1C1942E700E0E1E9 /* ListTableViewController.swift */,
+				3C06F8411C0CA73F001931C2 /* TimerViewController.swift */,
 				3CAF36C41C08DBEB00F8D4ED /* Main.storyboard */,
 				3CAF36C71C08DBEB00F8D4ED /* Assets.xcassets */,
 				3CAF36C91C08DBEB00F8D4ED /* LaunchScreen.storyboard */,

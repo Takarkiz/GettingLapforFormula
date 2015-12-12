@@ -22,7 +22,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="1t2-vt-O9f" kind="show" id="3Q5-Ya-y1u"/>
+                                    <segue destination="1t2-vt-O9f" kind="show" identifier="showTimer" id="3Q5-Ya-y1u"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

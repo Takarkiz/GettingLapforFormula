@@ -20,7 +20,8 @@ class TimerViewController: UIViewController, CLLocationManagerDelegate {
     var lat1:Double = 0.0
     var lon1:Double = 0.0
     var index:Int = 0
-    var ichi = []    
+    var ichi = []
+    var num:Int!
     
     //タイマー系のインスタンスの定義
     @IBOutlet var label: UILabel!
@@ -43,8 +44,8 @@ class TimerViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ichi = defaults.arrayForKey("ido")!
-        print("渡された値 緯度:\(ichi[0])経度:\(ichi[1])")
+//        ichi = defaults.arrayForKey("ido")!
+//        print("渡された値 緯度:\(ichi[0])経度:\(ichi[1])")
 //        lon1 = defaults.doubleForKey("keido")
 //        print("渡された経度の値は\(lon1)")
 //        lat1 = ichi[0]

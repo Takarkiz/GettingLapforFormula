@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ListTableViewController: UITableViewController{
-    /*UITableViewDataSource, UITableViewDelegate */
+class ListTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var defaults = NSUserDefaults.standardUserDefaults()
     var defaults2 = NSUserDefaults.standardUserDefaults()
@@ -30,34 +29,42 @@ class ListTableViewController: UITableViewController{
 
     
     //セクションごとの行数を返す
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return ichiarray.count
     }
     
-    //セクション数
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 0
-    }
     
     //各行に表示するセルを返す
-    override func tableView(tableView: UITableView,cellForRowAtIndexPath indexPath:NSIndexPath) -> UITableViewCell{
+    func tableView(tableView: UITableView,cellForRowAtIndexPath indexPath:NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
         //セルに表示するテキストを設定する
-        cell.textLabel?.text = "セル" + (indexPath.row).description
-        cell.detailTextLabel?.text = "サブタイトル"
+//        cell.textLabel?.text = "セル" + (indexPath.row).description
+        let ichidata = ichiarray[indexPath.row] as! String
+        
         return cell
         
     }
     
     //セクションタイトルを設定
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "位置情報" + section.description
     }
     
     //UITableViewDelegateのデリゲートメソッド
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         print("セル\(indexPath.row)が選択された")
+    }
+    
+    //セグエで移動する前に次の画面に値を渡す
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        //セグエがshowTimerの時に実行する。
+        if segue.identifier == "showTimer"{
+            if let indexPath = self.tableView.indexPathForSelectedRow(){
+                
+            }
+        
     }
     
 

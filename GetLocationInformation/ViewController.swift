@@ -11,7 +11,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate  {
+class ViewController: UIViewController, CLLocationManagerDelegate,UITextFieldDelegate {
     
     var myLocationManager:CLLocationManager!
     @IBOutlet var keido:UILabel!
@@ -21,6 +21,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate  {
     var lat1:Double = 0.0
     var lon1:Double = 0.0
     var ichi:[Double] = []
+    
+    //テキストフィールド
+    @IBOutlet var name:UITextField!
     
 
     override func viewDidLoad() {
@@ -51,6 +54,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate  {
         
 //        self.view.addSubview(getLocation())
         
+        //textFieldのデリゲード
+        self.name.delegate = self
+        
     }
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
@@ -71,6 +77,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate  {
             statusStr = "AuthorizedWhenInUse"
         }
         print(" CLAuthorizationStatus: \(statusStr)")
+    }
+    
+    func textField(textField: UITextField!, shouldCharactersInRange range: NSRange, replacementString string: String!) ->Bool {
+        
     }
     
     @IBAction func getLocation(){
